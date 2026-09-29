@@ -1,0 +1,6 @@
+{
+  "name": "Vimal Tour & Travellers",
+  "description": "Premier taxi and pilgrimage tour service in Varanasi offering 24/7 cabs, Kashi Vishwanath tours, Ayodhya yatras, and outstation car rentals.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
