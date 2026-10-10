@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext.js';
 import type { Language } from '../i18n/translations.js';
 import { translations } from '../i18n/translations.js';
+import { CONTACT_PHONE, getWhatsAppLink } from '../config/contact.js';
+import { WhatsAppCTA } from './WhatsAppCTA.js';
 
 interface HeaderProps {
   currentTab: string;
@@ -99,23 +101,20 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Call CTA */}
           <a
             className="hidden md:flex items-center gap-2 px-3 py-2 bg-[#e8e8e8] rounded-lg text-[#0d1c32] hover:bg-[#dadada] transition-colors"
-            href="tel:9559113710"
+            href={`tel:${CONTACT_PHONE}`}
             title="Call Helpline"
           >
             <span className="material-symbols-outlined text-[18px] text-[#0d1c32]">call</span>
-            <span className="text-xs font-bold font-mono">9559113710</span>
+            <span className="text-xs font-bold font-mono">{CONTACT_PHONE}</span>
           </a>
 
           {/* WhatsApp CTA */}
-          <a
-            className="flex items-center justify-center w-9 h-9 md:w-10 md:h-10 bg-[#25D366] text-white rounded-lg shadow-sm hover:scale-105 transition-transform"
-            href="https://wa.me/919559113710?text=Hello%20Vimal%20Tour%20%26%20Travellers%2C%20I%20would%20like%20to%20enquire%20about%20a%20vehicle%20booking."
-            target="_blank"
-            rel="noopener noreferrer"
+          <WhatsAppCTA
+            variant="icon"
+            className="w-9 h-9 md:w-10 md:h-10"
             title="Chat on WhatsApp"
-          >
-            <span className="material-symbols-outlined text-[20px]">chat</span>
-          </a>
+            message="Hello Vimal Tour & Travellers, I would like to enquire about a taxi/tour."
+          />
 
           {/* Book A Vehicle Button */}
           <button
@@ -217,14 +216,14 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="xl:hidden bg-white border-t border-[#e2e2e2] px-4 py-4 space-y-2 shadow-xl animate-in slide-in-from-top duration-150">
           <div className="grid grid-cols-2 gap-2 pb-3 border-b border-[#e2e2e2]">
             <a
-              href="tel:9559113710"
+              href={`tel:${CONTACT_PHONE}`}
               className="flex items-center justify-center gap-1.5 py-2.5 bg-[#f3f3f4] text-[#0d1c32] rounded-lg text-xs font-bold"
             >
               <span className="material-symbols-outlined text-[16px]">call</span>
-              Call 9559113710
+              Call {CONTACT_PHONE}
             </a>
             <a
-              href="https://wa.me/919559113710"
+              href={getWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-1.5 py-2.5 bg-[#25D366] text-white rounded-lg text-xs font-bold"

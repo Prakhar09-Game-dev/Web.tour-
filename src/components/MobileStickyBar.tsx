@@ -1,4 +1,6 @@
 import React from 'react';
+import { CONTACT_PHONE } from '../config/contact.js';
+import { WhatsAppCTA } from './WhatsAppCTA.js';
 
 interface MobileStickyBarProps {
   onOpenBooking: () => void;
@@ -6,25 +8,23 @@ interface MobileStickyBarProps {
 
 export const MobileStickyBar: React.FC<MobileStickyBarProps> = ({ onOpenBooking }) => {
   return (
-    <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0d1c32] text-white border-t border-white/10 px-3 py-2 shadow-2xl">
+    <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0d1c32] text-white border-t border-white/10 px-3 py-2 shadow-2xl pb-[calc(env(safe-area-inset-bottom)+0.5rem)]">
       <div className="grid grid-cols-3 gap-2">
         <a
-          href="tel:9559113710"
+          href={`tel:${CONTACT_PHONE}`}
           className="flex items-center justify-center gap-1.5 py-2 px-1 bg-white/10 rounded-lg text-xs font-bold text-white active:bg-white/20 transition-colors"
         >
           <span className="material-symbols-outlined text-[18px] text-[#fed65b]">call</span>
           <span>CALL</span>
         </a>
 
-        <a
-          href="https://wa.me/919559113710?text=Hello%20Vimal%20Tour%20%26%20Travellers%2C%20I%20would%20like%20to%20book%20a%20vehicle."
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center gap-1.5 py-2 px-1 bg-[#25D366] text-white rounded-lg text-xs font-bold active:scale-95 transition-transform"
-        >
-          <span className="material-symbols-outlined text-[18px]">chat</span>
-          <span>WHATSAPP</span>
-        </a>
+        <WhatsAppCTA
+          label="WHATSAPP"
+          compact
+          variant="button"
+          message="Hello Vimal Tour & Travellers, I would like to book a taxi."
+          className="!bg-[#25D366] !text-white !rounded-lg !font-bold !w-full"
+        />
 
         <button
           onClick={onOpenBooking}

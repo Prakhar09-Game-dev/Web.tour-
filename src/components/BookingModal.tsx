@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import type { Vehicle, TripType, Booking } from '../types.js';
 import { useAuth } from '../context/AuthContext.js';
+import { COMPANY_NAME, CONTACT_PHONE, getWhatsAppLink } from '../config/contact.js';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -155,7 +156,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
       if (err instanceof Error) {
         setErrorMsg(err.message);
       } else {
-        setErrorMsg('Failed to process booking. Please contact 9559113710.');
+        setErrorMsg(`Failed to process booking. Please contact ${CONTACT_PHONE}.`);
       }
     } finally {
       setSubmitting(false);
@@ -178,7 +179,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 {confirmedBooking ? 'Booking Request Received' : 'Reserve Your Vehicle'}
               </h2>
               <span className="text-[11px] text-[#b9c7e4]">
-                Vimal Tour & Travellers, Varanasi • 24/7 Available
+                {COMPANY_NAME}, Varanasi • 24/7 Available
               </span>
             </div>
           </div>
@@ -259,7 +260,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               {/* Action Buttons */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <a
-                  href={`https://wa.me/919559113710?text=Hello%20Vimal%20Tour%20%26%20Travellers%2C%20I%20have%20submitted%20Booking%20ID%20${confirmedBooking.id}%20for%20${confirmedBooking.travelDate}%20from%20${confirmedBooking.pickupLocation}%20to%20${confirmedBooking.dropLocation}.`}
+                  href={getWhatsAppLink(`Hello ${COMPANY_NAME}, I have submitted Booking ID ${confirmedBooking.id} for ${confirmedBooking.travelDate} from ${confirmedBooking.pickupLocation} to ${confirmedBooking.dropLocation}.`)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="py-3 px-4 bg-[#25D366] text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-sm hover:scale-[1.02] transition-transform text-center"
@@ -269,11 +270,11 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 </a>
 
                 <a
-                  href="tel:9559113710"
+                  href={`tel:${CONTACT_PHONE}`}
                   className="py-3 px-4 bg-[#0d1c32] text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-sm hover:bg-[#000000] transition-colors text-center"
                 >
                   <span className="material-symbols-outlined text-[18px]">call</span>
-                  <span>Call Helpline (9559113710)</span>
+                  <span>{`Call Helpline (${CONTACT_PHONE})`}</span>
                 </a>
               </div>
             </div>

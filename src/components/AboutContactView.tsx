@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { COMPANY_NAME, CONTACT_PHONE, CONTACT_PHONE_DISPLAY, getWhatsAppLink } from '../config/contact.js';
 
 export const AboutContactView: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -33,7 +34,7 @@ export const AboutContactView: React.FC = () => {
       if (err instanceof Error) {
         setErrorMsg(err.message);
       } else {
-        setErrorMsg('Something went wrong. Please call directly at 9559113710.');
+        setErrorMsg(`Something went wrong. Please call directly at ${CONTACT_PHONE}.`);
       }
     } finally {
       setSubmitting(false);
@@ -49,7 +50,7 @@ export const AboutContactView: React.FC = () => {
             ABOUT OUR ENTERPRISE
           </span>
           <h1 className="font-headline font-bold text-3xl md:text-4xl text-[#0d1c32] tracking-tight">
-            Vimal Tour & Travellers, Varanasi
+            {COMPANY_NAME}, Varanasi
           </h1>
           <p className="text-xs sm:text-sm text-[#44474d] leading-relaxed">
             Headquartered near Paramhansh Ashram at Murari Chauk, Lanka in Varanasi, Vimal Tour & Travellers has been serving pilgrims, tourists, corporate clients, and local residents with dependable, comfortable taxi rentals and curated holiday packages.
@@ -98,8 +99,8 @@ export const AboutContactView: React.FC = () => {
               <div>
                 <span className="font-bold text-white block">Helpline Numbers (Click to Call):</span>
                 <div className="flex flex-wrap gap-3 mt-1">
-                  <a href="tel:+919559113710" className="text-[#ffe088] font-bold font-mono text-sm underline hover:text-white">
-                    +91 9559113710
+                  <a href={`tel:+91${CONTACT_PHONE}`} className="text-[#ffe088] font-bold font-mono text-sm underline hover:text-white">
+                    {CONTACT_PHONE_DISPLAY}
                   </a>
                   <span className="text-white/40">|</span>
                   <a href="tel:+919453636321" className="text-[#ffe088] font-bold font-mono text-sm underline hover:text-white">
@@ -114,7 +115,7 @@ export const AboutContactView: React.FC = () => {
               <div>
                 <span className="font-bold text-white block">Instant WhatsApp Support:</span>
                 <a
-                  href="https://wa.me/919559113710?text=Hello%20Vimal%20Tour%20%26%20Travellers%2C%20I%20would%20like%20to%20enquire%20about%20a%20vehicle%20booking."
+                  href={getWhatsAppLink(`Hello ${COMPANY_NAME}, I would like to enquire about a vehicle booking.`)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 mt-1 px-3 py-1.5 bg-[#25D366] text-white rounded-lg text-xs font-bold hover:scale-105 transition-transform"
@@ -275,7 +276,7 @@ export const AboutContactView: React.FC = () => {
           <div className="bg-[#f3f3f4] p-5 rounded-2xl border border-[#e2e2e2]">
             <h3 className="font-bold text-xs text-[#0d1c32] mb-1">Direct Emergency Dispatch</h3>
             <p className="text-[11px] text-[#44474d] leading-relaxed">
-              If your train or flight is arriving in the next 1-2 hours, please call our 24/7 hotline directly at <a href="tel:9559113710" className="font-bold font-mono text-[#0d1c32] underline">9559113710</a> for fastest cab allocation.
+              If your train or flight is arriving in the next 1-2 hours, please call our 24/7 hotline directly at <a href={`tel:${CONTACT_PHONE}`} className="font-bold font-mono text-[#0d1c32] underline">{CONTACT_PHONE}</a> for fastest cab allocation.
             </p>
           </div>
         </div>

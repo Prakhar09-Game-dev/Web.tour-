@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext.js';
+import { COMPANY_NAME, CONTACT_PHONE, getWhatsAppLink } from '../config/contact.js';
 import type { Booking } from '../types.js';
 
 interface CustomerDashboardProps {
@@ -239,7 +240,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({ onOpenBook
                   <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[#f3f3f4]">
                     <div className="flex items-center gap-2">
                       <a
-                        href="tel:9559113710"
+                        href={`tel:${CONTACT_PHONE}`}
                         className="px-3 py-1.5 bg-[#f3f3f4] text-[#0d1c32] rounded-lg text-xs font-bold hover:bg-[#e8e8e8] flex items-center gap-1"
                       >
                         <span className="material-symbols-outlined text-[16px]">call</span>
@@ -247,7 +248,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({ onOpenBook
                       </a>
 
                       <a
-                        href={`https://wa.me/919559113710?text=Hello%20Vimal%20Tour%20%26%20Travellers%2C%20status%20update%20for%20my%20booking%20${booking.id}.`}
+                        href={getWhatsAppLink(`Hello ${COMPANY_NAME}, status update for my booking ${booking.id}.`)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-3 py-1.5 bg-[#25D366] text-white rounded-lg text-xs font-bold hover:scale-105 transition-transform flex items-center gap-1"

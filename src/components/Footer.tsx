@@ -1,4 +1,5 @@
 import React from 'react';
+import { CONTACT_PHONE, CONTACT_PHONE_DISPLAY } from '../config/contact.js';
 import type { Language } from '../i18n/translations.js';
 import { translations } from '../i18n/translations.js';
 
@@ -29,8 +30,8 @@ export const Footer: React.FC<FooterProps> = ({ lang, onNavigate }) => {
           <div className="space-y-1 text-xs">
             <p className="text-[#b9c7e4]">
               {t.emergencyHelpline}:{' '}
-              <a href="tel:9559113710" className="text-[#fed65b] font-mono font-bold hover:underline">
-                +91 9559113710
+              <a href={`tel:${CONTACT_PHONE}`} className="text-[#fed65b] font-mono font-bold hover:underline">
+                {CONTACT_PHONE_DISPLAY}
               </a>
             </p>
             <p className="text-[#b9c7e4]">
